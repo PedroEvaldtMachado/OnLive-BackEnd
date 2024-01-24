@@ -1,13 +1,14 @@
 import loginIsRequiredServer from "@/libs/auth/loginIsRequiredServer";
+import Home from "@/app/(home)/home";
+import SessionProvider from "@/libs/providers/session";
 
 async function SignIn() {
   await loginIsRequiredServer();
 
   return (
-    <div className="flex">
-      <h1>Dashboard</h1>
-      
-    </div>
+    <SessionProvider>
+      <Home/>
+    </SessionProvider>
   );
 }
 
