@@ -1,5 +1,3 @@
-
-
 export class BaseApi {
   private baseUrl: string;
 
@@ -27,7 +25,3 @@ export class BaseApi {
     return data;
   }
 }
-
-const Api = new BaseApi(process.env.API_URL as string);
-
-export default Api;

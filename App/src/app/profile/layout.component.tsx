@@ -1,6 +1,4 @@
-import './style.css';
-
-export default function HomeLayout({
+export default function ProfileLayout({
     children,
   }: Readonly<{
     children: React.ReactNode;
