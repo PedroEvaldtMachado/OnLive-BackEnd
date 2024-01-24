@@ -1,5 +1,5 @@
 import Content from 'components/content';
-import DefaultPage from 'components/defaut-page';
+import DefaultPage from 'components/pages/defaut-page';
 
 async function Home() {
   return (

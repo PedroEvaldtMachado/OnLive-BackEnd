@@ -1,7 +1,7 @@
 import React from 'react';
 import UserProfile from 'components/user-profile';
 import Content from 'components/content';
-import DefaultPage from 'components/defaut-page';
+import DefaultPage from 'components/pages/defaut-page';
 import { User, getServerSession } from 'next-auth';
 import { getProfileFromUser } from 'libs/user/functions';
 import loginIsRequiredServer from 'libs/auth/loginIsRequiredServer';

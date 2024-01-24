@@ -2,7 +2,7 @@
 
 import { PROFILE_PAGE_ROUTE } from 'app/profile/page';
 import { getImageFromUseSession as getImageUrlFromUseSession } from 'libs/user/functions';
-import ImageButton from 'components/image-button';
+import ImageButton from '@/components/buttons/image-button';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 

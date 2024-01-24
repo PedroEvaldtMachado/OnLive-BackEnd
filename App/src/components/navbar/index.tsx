@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { useSession } from 'next-auth/react';
-import ImageButton from 'components/image-button';
-import UserButton from 'components/user-button';
+import ImageButton from 'components/buttons/image-button';
+import UserButton from 'components/buttons/user-button';
 import './style.css';
 
 function NavBar() {
