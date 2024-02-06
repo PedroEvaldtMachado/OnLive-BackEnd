@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.Caching.Distributed;
+﻿using LanguageExt.Common;
+using Microsoft.Extensions.Caching.Distributed;
 using Services.Users;
 using Shared.Dtos.Users;
 using Shared.Infra.Extensions;
+using System.ComponentModel.DataAnnotations;
 
 namespace Services.Implementations.Users
 {
@@ -14,11 +16,11 @@ namespace Services.Implementations.Users
             _cache = cache;
         }
 
-        public UserDto CreateFakeUser(string? username, string email)
+        public Result<UserDto> CreateFakeUser(string? username, string email)
         {
             if (username is null)
             {
-                throw new ArgumentNullException(nameof(username));
+                return new Result<UserDto>(new ValidationException("'username' required"));
             }
 
             var user = new UserDto(username, email)
@@ -28,7 +30,7 @@ namespace Services.Implementations.Users
 
             _cache.Value.SetAsync(user!.Id, user!);
 
-            return user;
+            return new Result<UserDto>(user);
         }
     }
 }

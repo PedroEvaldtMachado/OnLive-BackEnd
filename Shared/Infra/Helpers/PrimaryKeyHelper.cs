@@ -1,12 +1,18 @@
-﻿namespace Shared.Infra.Helpers
+﻿using LanguageExt.Common;
+using System.ComponentModel.DataAnnotations;
+
+namespace Shared.Infra.Helpers
 {
     public static class PrimaryKeyHelper
     {
-        public static Guid ValidateIdGetGuid(string id)
+        private const string CANNOT_BE_NULL = "'Id' cannot be null.";
+        private const string NEED_TO_BE_A_GUID = "'Id' need to be a guid.";
+
+        public static Result<Guid> ValidateIdGetGuid(string id)
         {
             if (id is null)
             {
-                throw new ArgumentNullException(nameof(id));
+                return new Result<Guid>(new ValidationException(CANNOT_BE_NULL));
             }
 
             if (Guid.TryParse(id, out var guid))
@@ -15,7 +21,7 @@
             }
             else
             {
-                throw new InvalidCastException(nameof(id));
+                return new Result<Guid>(new ValidationException(NEED_TO_BE_A_GUID));
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Caching.Distributed;
+﻿using LanguageExt.Common;
+using Microsoft.Extensions.Caching.Distributed;
 using Shared.Infra;
 using Shared.Infra.Extensions;
 using Shared.Infra.Helpers;
@@ -31,14 +32,21 @@ namespace Shared.Querys.Implementations
             _query = param.Query;
         }
 
-        public async Task<D?> GetAsyncCached(string id)
+        public async Task<Result<D?>> GetAsyncCached(string id)
         {
-            var guid = PrimaryKeyHelper.ValidateIdGetGuid(id);
-            var result = await _cache.Value.GetAsync<D>(guid);
+            var resultGuid = PrimaryKeyHelper.ValidateIdGetGuid(id);
 
+            if (resultGuid.IsFaulted)
+            {
+                return resultGuid.NewWithException<Guid, D?>();
+            }
+
+            var guid = resultGuid.GetValue();
+
+            var result = await _cache.Value.GetAsync<D>(guid);
             result ??= await _query.Value.GetAsync(guid);
 
-            return result;
+            return new Result<D?>(result);
         }
     }
 }

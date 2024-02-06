@@ -2,6 +2,7 @@
 using Shared.Dtos.Users;
 using Shared.Querys.Implementations;
 using Shared.Querys;
+using LanguageExt.Common;
 
 namespace Querys.Implementations.Users
 {
@@ -9,9 +10,9 @@ namespace Querys.Implementations.Users
     {
         public UserQuery(IQueryCachedParams<UserDto> queryParams) : base (queryParams) { }
 
-        public Task<UserDto?> GetAsync(string id)
+        public async Task<Result<UserDto?>> GetAsync(string id)
         {
-            throw new NotImplementedException();
+            return await Task.Run(() => { return new Result<UserDto?>(new NotImplementedException("Método não implementado")); });
         }
     }
 }
