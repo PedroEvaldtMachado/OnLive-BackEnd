@@ -28,7 +28,7 @@ namespace Services.Implementations.Users
                 Id = Guid.NewGuid()
             };
 
-            _cache.Value.SetAsync(user!.Id, user!);
+            _cache.Value.SetAsync(user.GetPrimaryKey().ToString()!, user);
 
             return new Result<UserDto>(user);
         }

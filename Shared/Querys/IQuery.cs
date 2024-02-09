@@ -7,8 +7,8 @@ namespace Shared.Querys
         public Task<Result<D?>> GetAsync(string id);
     }
 
-    internal interface IQueryGuid<D>
+    internal interface IQueryTyped<D>
     { 
-        public Task<D?> GetAsync(Guid id);
+        public Task<D?> GetAsync(object id);
     }
 }

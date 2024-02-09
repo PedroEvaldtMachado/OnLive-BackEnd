@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Shared.Domain.Basic
 {
-    public abstract class PrimaryKey : IPrimaryKey
+    public abstract class PrimaryKey<T> : IPrimaryKey
     {
         [Key]
-        public Guid Id { get; set; }
+        public virtual T Id { get; set; } = default!;
 
-        public Guid GetPrimaryKey() => Id;
+        public object GetPrimaryKey() => Id!;
     }
 }

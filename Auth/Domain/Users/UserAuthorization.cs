@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Domain.Users
 {
     [Table("UserAuthorization")]
-    public class UserAuthorization : PrimaryKey
+    public class UserAuthorization : PrimaryKey<Guid>
     {
         public string? Authorization { get; set; }
         public AuthenticationMethod Method { get; set; }

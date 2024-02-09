@@ -12,7 +12,12 @@ namespace Querys.Implementations.Users
 
         public async Task<Result<UserDto?>> GetAsync(string id)
         {
-            return await Task.Run(() => { return new Result<UserDto?>(new NotImplementedException("Método não implementado")); });
+            return await Task.Run(() => { return new Result<UserDto?>(new NotImplementedException("Método não implementado.")); });
+        }
+
+        public override async Task<UserDto?> GetAsync(object id)
+        {
+            throw new NotImplementedException("Método não implementado.");
         }
     }
 }

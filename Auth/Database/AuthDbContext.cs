@@ -12,7 +12,8 @@ namespace Database
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder) { 
+        protected override void OnModelCreating(ModelBuilder builder) {
+            builder.HasDefaultSchema("auth");
             base.OnModelCreating(builder);
 
             builder.Entity<UserAuthorization>();

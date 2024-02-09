@@ -5,16 +5,16 @@ using Shared.Infra.Helpers;
 
 namespace Shared.Querys.Implementations
 {
-    public abstract class Query<D> : IQuery<D>, IQueryGuid<D>
+    public abstract class Query<D> : IQuery<D>, IQueryTyped<D>
         where D : IPrimaryKey
     {
         public async Task<Result<D?>> GetAsync(string id)
         {
-            var resultGuid = PrimaryKeyHelper.ValidateIdGetGuid(id);
+            var resultGuid = PrimaryKeyHelper.ValidateIdGetConverted<D>(id);
 
             if (resultGuid.IsFaulted)
             {
-                return resultGuid.NewWithException<Guid, D?>();
+                return resultGuid.NewWithException<object, D?>();
             }
 
             var guid = resultGuid.GetValue();
@@ -22,6 +22,6 @@ namespace Shared.Querys.Implementations
             return await GetAsync(guid);
         }
 
-        public abstract Task<D?> GetAsync(Guid id);
+        public abstract Task<D?> GetAsync(object id);
     }
 }

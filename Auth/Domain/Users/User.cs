@@ -6,7 +6,7 @@ namespace Domain.Users
 {
     public class User : IdentityUser, IPrimaryKey
     {
-        public Guid GetPrimaryKey() => Guid.Parse(Id);
+        object IPrimaryKey.GetPrimaryKey() => Id;
 
         public User() : base()
         {

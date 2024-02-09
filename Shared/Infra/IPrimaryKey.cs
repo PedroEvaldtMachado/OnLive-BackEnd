@@ -2,6 +2,6 @@
 {
     public interface IPrimaryKey
     {
-        public Guid GetPrimaryKey();
+        object GetPrimaryKey();
     }
 }

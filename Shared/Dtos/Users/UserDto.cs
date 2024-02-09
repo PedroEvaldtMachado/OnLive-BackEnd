@@ -2,7 +2,7 @@
 
 namespace Shared.Dtos.Users
 {
-    public class UserDto : PrimaryKeyDto
+    public class UserDto : PrimaryKeyDto<Guid>
     {
         public UserDto()
         {
