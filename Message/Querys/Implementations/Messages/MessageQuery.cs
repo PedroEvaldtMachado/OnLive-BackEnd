@@ -15,7 +15,7 @@ using Shared.Querys.Implementations;
 
 namespace Querys.Implementations.Messages
 {
-    public class MessageQueryBuilder : IBuilder<IMessageQuery>
+    internal class MessageQueryBuilder : IBuilder<IMessageQuery>
     {
         private readonly IQueryCachedParams<MessageDto> _queryParams;
         private readonly IMapper<Message, MessageDto> _mapperMessage;
