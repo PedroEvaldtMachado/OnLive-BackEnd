@@ -2,7 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using Shared.Infra;
 
-namespace Domain
+namespace Domain.Entities
 {
     [BsonIgnoreExtraElements]
     public abstract class Base<T> : IPrimaryKey

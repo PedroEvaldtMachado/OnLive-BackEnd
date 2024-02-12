@@ -34,8 +34,8 @@ namespace Api.Controllers
             return new OkObjectResult(result);
         }
 
-        [HttpPost("SendPublicMessage", Name = "SendPublicMessage")]
-        public async Task<IActionResult> SendPublicMessageAsync([FromQuery] string context, [FromBody] MessageDto message)
+        [HttpPost("SendMessage", Name = "SendMessage")]
+        public async Task<IActionResult> SendMessageAsync([FromQuery] string context, [FromBody] MessageDto message)
         {
             var result = await _messageServiceBuilder.Value.Build(context).CreateAsync(message);
             return result.ApiResult(u => u);

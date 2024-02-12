@@ -1,5 +1,4 @@
-﻿using Domain;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Shared.Infra;
 

@@ -13,7 +13,7 @@ using Domain;
 
 namespace Services.Implementations.Messages
 {
-    internal class MessageServiceBuilder : IBuilder<IMessageService>
+    public class MessageServiceBuilder : IBuilder<IMessageService>
     {
         private readonly IMapper<Message, MessageDto> _mapper;
         private readonly Lazy<IDbContext<Message>> _dbContext;
@@ -30,7 +30,7 @@ namespace Services.Implementations.Messages
         }
     }
 
-    internal class MessageService : IMessageService
+    public class MessageService : IMessageService
     {
         private readonly string _ownerId;
         private readonly IMapper<Message, MessageDto> _mapper;

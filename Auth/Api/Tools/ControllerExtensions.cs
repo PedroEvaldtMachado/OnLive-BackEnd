@@ -1,6 +1,7 @@
 ﻿using LanguageExt.Common;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
+using LanguageExt;
 
 namespace Api.Tools
 {
@@ -11,7 +12,14 @@ namespace Api.Tools
             return result.Match<IActionResult>(
                 Succ: value =>
                 {
-                    return new OkObjectResult(func(value));
+                    if (value is Unit)
+                    {
+                        return new OkResult();
+                    }
+                    else
+                    {
+                        return new OkObjectResult(func(value));
+                    }
                 },
                 Fail: err =>
                 {
