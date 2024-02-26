@@ -1,6 +1,4 @@
-﻿using Accord.Video;
-using Accord.Video.DirectShow;
-using Database;
+﻿using Database;
 using Domain.Entities;
 using LanguageExt;
 using LanguageExt.Common;

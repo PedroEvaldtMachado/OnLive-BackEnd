@@ -9,13 +9,13 @@ namespace Database
 
         public CachedContext(DbContextOptions<CachedContext> options) : base(options) { }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.HasDefaultSchema("app");
-            base.OnModelCreating(builder);
+            modelBuilder.HasDefaultSchema("app");
+            base.OnModelCreating(modelBuilder);
 
-            builder.Entity<StreamKey>();
-            builder.Entity<VideoStructure>();
+            modelBuilder.Entity<StreamKey>();
+            modelBuilder.Entity<VideoStructure>();
         }
     }
 }

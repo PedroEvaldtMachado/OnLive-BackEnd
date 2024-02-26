@@ -8,7 +8,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:5001;http://localhost:5000"
+      "applicationUrl": "https://www.hiperpe.com:5001;http://www.hiperpe.com:5000"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -22,9 +22,11 @@
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "DockerfileRunArguments": " -p 5002:5002",
       "environmentVariables": {
         "ASPNETCORE_URLS": "https://+:443;http://+:80"
       },
+      "publishAllPorts": true,
       "httpPort": 5000,
       "sslPort": 5001,
       "useSSL": true
@@ -35,7 +37,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "http://www.hiperpe.com:5000",
       "sslPort": 5001
     }
   }

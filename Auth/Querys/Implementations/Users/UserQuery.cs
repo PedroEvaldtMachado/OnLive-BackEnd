@@ -17,7 +17,7 @@ namespace Querys.Implementations.Users
 
         public override async Task<UserDto?> GetAsync(object id)
         {
-            throw new NotImplementedException("Método não implementado.");
+            return await new Task<UserDto?>(() => throw new NotImplementedException("Método não implementado."));
         }
     }
 }

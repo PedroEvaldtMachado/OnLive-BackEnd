@@ -32,7 +32,7 @@ namespace Api.Controllers
             [FromHeader] long duration,
             [FromHeader] string videoType)
         {
-            var item = Request.Form.Files.FirstOrDefault();
+            var item = Request.Form.Files?[0];
 
             if (item is not null)
             {

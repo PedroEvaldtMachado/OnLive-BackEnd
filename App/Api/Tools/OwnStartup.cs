@@ -7,13 +7,13 @@ namespace Api.Tools
 {
     public static class OwnStartup
     {
-        public static void AddConfiguration(this WebApplicationBuilder builder)
+        public static void AddConfiguration(this IServiceCollection builder)
         {
-            builder.Services.AddDistributedMemoryCache();
+            builder.AddDistributedMemoryCache();
 
-            builder.Services.AddSharedRegistration();
-            builder.Services.AddDbContext<CachedContext>(op => op.UseInMemoryDatabase("Cache"));
-            builder.Services.AddInternalServices();
+            builder.AddSharedRegistration();
+            builder.AddDbContext<CachedContext>(op => op.UseInMemoryDatabase("Cache"));
+            builder.AddInternalServices();
         }
 
         public static void UseConfiguration(this WebApplication _)

@@ -64,14 +64,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Message\Service
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Querys", "Message\Querys\Querys.csproj", "{CDD79917-6470-48FA-B3D1-1DE40C73039D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "App\Services\Services.csproj", "{C235D796-828D-4998-B130-A9E359B56402}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "App\Services\Services.csproj", "{C235D796-828D-4998-B130-A9E359B56402}"
 	ProjectSection(ProjectDependencies) = postProject
 		{18941F40-C9F6-4848-A559-E6153EB73BCE} = {18941F40-C9F6-4848-A559-E6153EB73BCE}
 		{34E2D3A0-1E98-4F2A-B00D-22E78062BBE6} = {34E2D3A0-1E98-4F2A-B00D-22E78062BBE6}
 		{878C1A19-4AFE-4E02-A645-1CE723716F31} = {878C1A19-4AFE-4E02-A645-1CE723716F31}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "App\Domain\Domain.csproj", "{423244AF-2AB4-41DB-9C9F-46615FA80136}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "App\Domain\Domain.csproj", "{423244AF-2AB4-41DB-9C9F-46615FA80136}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
