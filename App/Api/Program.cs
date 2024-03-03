@@ -1,7 +1,6 @@
 using Api.Tools;
 using LiveStreamingServerNet;
 using LiveStreamingServerNet.Networking.Helpers;
-using LiveStreamingServerNet.Standalone.Insatller;
 using LiveStreamingServerNet.Transmuxer.Installer;
 using LiveStreamingServerNet.Transmuxer.Internal.Utilities;
 using Microsoft.AspNetCore.StaticFiles;
@@ -11,7 +10,7 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var trasmuxerOutputPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)!, "TransmuxerOutput");
+var trasmuxerOutputPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)!, "TransmuxerOutputMQ");
 new DirectoryInfo(trasmuxerOutputPath).Create();
 
 builder.Services.AddControllers();
@@ -22,19 +21,21 @@ builder.Services.AddCors(Services => Services.AddPolicy("AllowAll", builder => b
 builder.Services.AddConfiguration();
 
 await using var liveStreamingServer = LiveStreamingServerBuilder.Create()
-    .ConfigureRtmpServer(options =>
+    .ConfigureRtmpServer(options => {
         options
+            .AddBandwidthLimiter(25_000_000)
             .AddTransmuxer(options =>
                 options.AddTransmuxerEventHandler(svc =>
                     new TransmuxerEventListener(trasmuxerOutputPath, svc.GetRequiredService<ILogger<TransmuxerEventListener>>()))
             )
             .AddFFmpeg(options =>
             {
+                options.TransmuxerIdentifier = "ffmpeg264";
                 options.FFmpegPath = ExecutableFinder.FindExecutableFromPATH("ffmpeg")!;
                 options.OutputPathResolver = (streamPath, streamArguments)
                     => Task.FromResult(Path.Combine(trasmuxerOutputPath, streamPath.Trim('/'), "output.m3u8"));
-            })
-    )
+            });
+    })
     .ConfigureLogging(options => options.AddConsole())
     .Build();
 
@@ -42,11 +43,8 @@ builder.Services.AddBackgroundServer(liveStreamingServer, new IPEndPoint(IPAddre
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.MapControllers();

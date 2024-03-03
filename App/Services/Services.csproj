@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="VisioForge.DotNet.VideoCapture" Version="15.8.25" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Shared\Dtos\Shared.Dtos.csproj" />
     <ProjectReference Include="..\..\Shared\Infra\Shared.Infra.csproj" />
     <ProjectReference Include="..\Database\Database.csproj" />

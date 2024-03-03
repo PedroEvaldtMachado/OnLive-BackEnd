@@ -15,9 +15,9 @@
 
   <ItemGroup>
     <PackageReference Include="LanguageExt.Core" Version="4.4.8" />
-    <PackageReference Include="LiveStreamingServerNet" Version="0.5.2" />
-    <PackageReference Include="LiveStreamingServerNet.Rtmp" Version="0.5.2" />
-    <PackageReference Include="LiveStreamingServerNet.Transmuxer" Version="0.5.1" />
+    <PackageReference Include="LiveStreamingServerNet" Version="0.5.3" />
+    <PackageReference Include="LiveStreamingServerNet.Rtmp" Version="0.5.3" />
+    <PackageReference Include="LiveStreamingServerNet.Transmuxer" Version="0.5.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
       <PrivateAssets>all</PrivateAssets>
@@ -34,7 +34,6 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="System.Text.Json" Version="8.0.2" />
-    <PackageReference Include="VisioForge.DotNet.VideoCapture" Version="15.8.25" />
   </ItemGroup>
 
   <ItemGroup>
